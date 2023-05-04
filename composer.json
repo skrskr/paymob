@@ -1,0 +1,13 @@
+{
+    "name": "skrskr/paymob",
+    "description": "Paymob payment gateway integration",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mohamed Sakr",
+            "email": "mohamed1.sakr1996@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
