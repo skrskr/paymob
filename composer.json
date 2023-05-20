@@ -1,6 +1,6 @@
 {
     "name": "skrskr/paymob",
-    "description": "Paymob payment gateway integration",
+    "description": "Laravel paymob payment gateway api integration",
     "type": "library",
     "authors": [
         {
@@ -9,5 +9,17 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Skrskr\\Paymob\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Skrskr\\Paymob\\PaymobServiceProvider"
+          ]
+        }
+      }
 }
