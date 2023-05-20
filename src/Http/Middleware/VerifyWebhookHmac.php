@@ -21,14 +21,18 @@ class VerifyWebhookHmac
      *
      * @throws HttpException
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $hmacSecret = config('paymob.hmac_secret');
-        $obj = $request->get('obj');
-        $hmac = $request->get('hmac');
-        $calculatedHmac = $this->calculateHmac($obj, $hmacSecret);
-        if($hmac !== $calculatedHmac) {
-            // abort(403, 'Access denied');
+        $type = $request->get('type');
+        // \Log::info("Type: $type");
+        if($type == "TRANSACTION") {
+            $hmacSecret = config('paymob.hmac_secret');
+            $obj = $request->get('obj');
+            $hmac = $request->get('hmac');
+            $calculatedHmac = $this->calculateHmac($obj, $hmacSecret);
+            if($hmac !== $calculatedHmac) {
+                abort(403, 'Access denied');
+            }
         }
 
         return $next($request);
