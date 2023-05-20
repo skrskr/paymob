@@ -14,10 +14,11 @@ class PaymobServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
         $this->publishes([
             __DIR__.'./../config/paymob.php' => config_path('paymob.php'),
         ], 'config');
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     public function register()
