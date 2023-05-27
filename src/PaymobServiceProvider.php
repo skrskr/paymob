@@ -15,7 +15,7 @@ class PaymobServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'./../config/paymob.php' => config_path('paymob.php'),
+            __DIR__.'/../config/paymob.php' => config_path('paymob.php'),
         ], 'config');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
@@ -23,7 +23,7 @@ class PaymobServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'./../config/paymob.php', 'paymob');
+        $this->mergeConfigFrom(__DIR__.'/../config/paymob.php', 'paymob');
 
         // PayMob Facede.
         $this->app->singleton('paymob', function () {
