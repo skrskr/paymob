@@ -7,7 +7,7 @@ namespace Skrskr\Paymob\Exceptions;
 
 use Exception;
 
-class InvalidApiExceptionException extends Exception
+class InvalidApiKeyException extends Exception
 {
 
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Skrskr\Paymob;
 
-use Skrskr\Paymob\Exceptions\InvalidApiExceptionException;
+use Skrskr\Paymob\Exceptions\InvalidApiKeyException;
 use Skrskr\Paymob\Exceptions\PaymentKeyException;
 use Skrskr\Paymob\Exceptions\RegisterOrderException;
 use Skrskr\Paymob\Traits\Helper;
@@ -43,7 +43,7 @@ class Paymob
         if($authResponse->getStatusCode() == 201) {
             return $authResponse['token'];
         }
-        throw new InvalidApiExceptionException("Authentication failed, Invalid api key");
+        throw new InvalidApiKeyException("Authentication failed, Invalid api key");
     }
 
     /**
