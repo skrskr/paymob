@@ -26,6 +26,52 @@ PAYMOB_CARD_IFRAME_ID      =
 PAYMOB_HMAC_SECRET         = 
 ```
 
+- Make payment and get iframe url from paymob
+
+```php
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Skrskr\Paymob\Facades\Paymob;
+
+
+Route::get('/test', function () {
+
+    $orderData = [
+        "amount_cents"=> "100", // required, integer value in cents
+        "currency"=> "EGP", // required
+        "merchant_order_id"=> 1243, //	optional, A unique alpha-numeric value for each transaction
+        "expiration" => 3600, // required
+        // optional fields in billing data, if it isn't available, please send it to be "NA",
+        "billing_data" => [
+            "first_name" => "Mohamed", // required
+            "last_name" => "Sakr", // required
+            "email" => "mohamed@mail.com", // required
+            "phone_number" => "01234567890", // required 
+            "apartment" => "NA", // optional
+            "floor" => "NA", // optional
+            "street" => "NA", //optional
+            "building" => "NA",  // optional
+            "shipping_method" => "NA", // optional
+            "postal_code" => "NA",  //optional
+            "city" => "NA",  // optional
+            "country" => "NA", // optional
+            "state" => "NA" // optional
+        ],
+    ];
+
+    // Get payment iframe URL
+    $iframeUrl = Paymob::pay($orderData);
+    return $iframeUrl;
+    //redirect to ifram url
+    // return redirect()->to($iframeUrl);
+});
+
+
+```
+
+
 - Webhook transaction url:
 ```
 POST Request: (https://yourdomain.com/paymob/webhook)
@@ -160,3 +206,4 @@ class EventServiceProvider extends ServiceProvider
 }
 
 ```
+
