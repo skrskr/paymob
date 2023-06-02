@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Skrskr\Paymob;
 
 use Illuminate\Support\ServiceProvider;
-use Skrskr\Paymob\Facades\Paymob;
+use Skrskr\Paymob\Paymob;
 
 
 
@@ -26,7 +26,7 @@ class PaymobServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/paymob.php', 'paymob');
 
         // PayMob Facede.
-        $this->app->singleton('paymob', function () {
+        $this->app->bind('paymob', function () {
             return new Paymob();
         });
     }
