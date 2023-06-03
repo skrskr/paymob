@@ -6,13 +6,13 @@ This is a laravel package to facilate integartion with paymob apis [Paymob docs]
 
 1- You can install the package via composer:
 
-```
+```php
 composer require skrskr/paymob
 ```
 
 2- Publish config file for editing if needed:
 
-```
+```php
 php artisan vendor:publish --tag=config --provider="Skrskr\Paymob\PaymobServiceProvider"
 ```
 
@@ -20,10 +20,10 @@ php artisan vendor:publish --tag=config --provider="Skrskr\Paymob\PaymobServiceP
 - Register new merchant account or login if you already have one ([Register](https://accept.paymob.com/portal2/en/register?flash=true)).
 - Get Paymob credentials from Paymob Dashboard ([How](https://docs.paymob.com/docs/profile)) and update `.env` file.
 ```
-PAYMOB_API_KEY             = 
-PAYMOB_CARD_INTEGRATION_ID = 
-PAYMOB_CARD_IFRAME_ID      = 
-PAYMOB_HMAC_SECRET         = 
+PAYMOB_API_KEY             =
+PAYMOB_CARD_INTEGRATION_ID =
+PAYMOB_CARD_IFRAME_ID      =
+PAYMOB_HMAC_SECRET         =
 ```
 
 - Make payment and get iframe url from paymob
@@ -73,13 +73,13 @@ Route::get('/test', function () {
 
 
 - Webhook transaction url:
-```
-POST Request: (https://yourdomain.com/paymob/webhook)
 
-# Replace your yourdomain.com with actual domain name
+    POST Request: (https://yourdomain.com/paymob/webhook)
 
-For testing callback, you can use tool like [Ngrok](https://ngrok.com)
-```
+    Replace your yourdomain.com with actual domain name
+
+    For testing callback, you can use tool like [Ngrok](https://ngrok.com) 
+
 
 - Add Paymob trasaction callback to integration card [How](https://docs.paymob.com/docs/payment-integrations) 
 
