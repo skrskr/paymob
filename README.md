@@ -84,13 +84,19 @@ For testing callback, you can use tool like [Ngrok](https://ngrok.com)
 - Add Paymob trasaction callback to integration card [How](https://docs.paymob.com/docs/payment-integrations) 
 
 - For handling webhook events, you should create two listeners for each event and then register events and listeners in `EventServiceProvider` 
-```
+```php 
+# Events:
 - Skrskr\Paymob\Events\TransactionSuccessedEvent::class
 - Skrskr\Paymob\Events\TransactionFailedEvent::class
 
+# Create two listeners for each event 
+# run two commands
+php artisan make:listener PaymobTransactionSuccessedListener
+php artisan make:listener PaymobTransactionFailedListener
+
 ```
 
-1- in `App\Listeners` add `PaymobTransactionSuccessedListener` class
+1- in `App\ListenersPaymobTransactionSuccessedListener.php` replace file content with class below
 
 ```php
 <?php
@@ -127,8 +133,7 @@ class PaymobTransactionSuccessedListener
 
 ```
 
-2- in `App\Listeners` add `PaymobTransactionFailedListener` class
-
+2- in `App\Listeners\PaymobTransactionFailedListener.php` replace file content with class content below
 ```php
 <?php
 
